@@ -1,0 +1,49 @@
+<div class="mt-6 md:mt-10 w-11/12 md:w-7/12 mx-auto">
+	<%= form_with model: @account, url: update_account_path do |f| %>
+		<div class="space-y-4 md:space-y-6">
+			<div class="field">
+				<%= f.label :avatar, class: "block mb-2 text-sm font-medium text-slate-100" %>
+				<%= f.file_field :avatar, class: "block w-full text-sm border rounded-lg cursor-pointer text-slate-100 focus:outline-none bg-slate-700 file:bg-slate-700  file:text-slate-200 file:p-3 file:border-0 file:border-r-2 file:shadow-none file:border-slate-400 border-slate-600 placeholder-slate-400", type: "file" %>
+				<p class="mt-1 text-sm text-slate-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
+			</div>
+
+			<div class="flex w-full justify-between gap-x-3">
+				<div class="field w-1/2">
+					<%= f.label :first_name, class: 'block mb-2 text-sm font-medium text-white' %>
+					<%= f.text_field :first_name, autocomplete: "first_name", class: 'file-input file-input-bordered border sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-slate-700 border-slate-600 placeholder-slate-400 text-white focus:ring-blue-500 focus:border-blue-500' %>
+				</div>
+
+				<div class="field w-1/2">
+					<%= f.label :last_name, class: 'block mb-2 text-sm font-medium text-white' %>
+					<%= f.text_field :last_name, class: 'border sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-slate-700 border-slate-600 placeholder-slate-400 text-white focus:ring-blue-500 focus:border-blue-500' %>
+				</div>
+			</div>
+
+			<div class="flex w-full justify-between gap-x-3">
+				<div class="field w-3/5">
+					<%= f.label :designation, class: 'block mb-2 text-sm font-medium text-white' %>
+					<%= f.text_field :designation, class: 'border sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-slate-700 border-slate-600 placeholder-slate-400 text-white focus:ring-blue-500 focus:border-blue-500' %>
+				</div>
+				<div class="field w-2/5">
+					<%= f.label :company, class: 'block mb-2 text-sm font-medium text-white' %>
+					<%= f.text_field :company, class: 'border sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-slate-700 border-slate-600 placeholder-slate-400 text-white focus:ring-blue-500 focus:border-blue-500' %>
+				</div>
+			</div>
+
+			<div class="field">
+				<%= f.label :address, class: 'block mb-2 text-sm font-medium text-white' %>
+				<%= f.text_field :address, class: 'border sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-slate-700 border-slate-600 placeholder-slate-400 text-white focus:ring-blue-500 focus:border-blue-500' %>
+			</div>
+
+			<div class="field">
+				<%= f.label :about, class: 'block mb-2 text-sm font-medium text-white' %>
+				<%= f.text_area :about, rows: "3", class: 'border sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-slate-700 border-slate-600 placeholder-slate-400 text-white focus:ring-blue-500 focus:border-blue-500' %>
+			</div>
+
+			<div class="action">
+				<%= f.submit "Update", class: "text-white hover:bg-blue-700 focus:ring-4 focus:outline-none cursor-pointer focus:ring-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800" %>
+			</div>
+
+		</div>
+	<% end %>
+</div>
