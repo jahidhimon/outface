@@ -1,0 +1,5 @@
+<div class="mt-6 md:mt-10 w-11/12 md:w-7/12 mx-auto">
+	<%= render "post", post: @post %>
+</div>
+
+<%= turbo_frame_tag "post_#{@post.id}_comments", src: post_comments_path(@post), target: "_top" %>

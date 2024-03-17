@@ -10,4 +10,5 @@ class Account < ApplicationRecord
   end
 
   has_many :loves, dependent: :destroy
+  has_many :comments
 end
