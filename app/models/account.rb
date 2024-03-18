@@ -9,6 +9,6 @@ class Account < ApplicationRecord
     attachable.variant :thumb, resize_to_limit: [50, 50]
   end
 
-  has_many :loves, dependent: :destroy
+  has_many :loves, dependent: :destroy, class_name: 'Love'
   has_many :comments
 end
