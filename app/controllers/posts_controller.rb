@@ -2,7 +2,7 @@
 
 class PostsController < ApplicationController
   def index
-    @posts = current_user.account.posts.by_recently_created
+    @posts = Post.all.by_recently_created
   end
 
   def show
@@ -18,11 +18,11 @@ class PostsController < ApplicationController
     @post.author = current_user.account
 
     if @post.save
-      flash[:success] = 'Your post has been saved successfully'
-      redirect_to root_path
+      flash[:success] = 'Your post has been saved successfully.'
     else
-      render :new, status: :unprocessable_entity
+      flash[:alert] = 'Your post has some problems.'
     end
+    redirect_to root_path
   end
 
   private

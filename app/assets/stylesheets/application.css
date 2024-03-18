@@ -18,6 +18,10 @@
 	background-color: rgb(190 242 100);
 }
 
+.toast-suggestion {
+	background-color: rgb(250 204 21);
+}
+
 .toast-notice {
 	background-color: rgb(134 239 172);
 }
