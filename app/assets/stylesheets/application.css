@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+.toast-success {
+	background-color: rgb(190 242 100);
+}
+
+.toast-notice {
+	background-color: rgb(134 239 172);
+}
+
+.toast-alert {
+	background-color: rgb(252 165 165);
+}
