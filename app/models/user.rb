@@ -6,4 +6,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one :account, dependent: :destroy
+
+  after_create :create_user_account
+
+  private
+
+  def create_user_account
+    build_account.save(validate: false)
+  end
 end
