@@ -13,5 +13,6 @@ class User < ApplicationRecord
 
   def create_user_account
     build_account.save(validate: false)
+    Follow.create(follower_id: account.id, followee_id: account.id)
   end
 end

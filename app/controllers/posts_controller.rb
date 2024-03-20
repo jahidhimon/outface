@@ -2,7 +2,7 @@
 
 class PostsController < ApplicationController
   def index
-    @posts = Post.all.by_recently_created
+    @posts = Post.where(account_id: current_user.account.followees).by_recently_created
   end
 
   def show
