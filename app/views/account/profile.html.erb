@@ -1,9 +1,9 @@
-<div class="p-12">
+<div class="p-12 w-10/12 mx-auto">
 	<div class="p-8 bg-slate-800 rounded-lg shadow">
 		<div class="grid grid-cols-1 md:grid-cols-3">
 			<div class="grid grid-cols-3 text-center order-last md:order-first mt-20 md:mt-0">
 				<div>
-					<p class="font-bold text-slate-200 text-xl">22</p>
+					<p class="font-bold text-slate-200 text-xl"><%= @account.followers.count %></p>
 					<p class="text-slate-400">followers</p>
 				</div>
 				<div>
@@ -30,22 +30,19 @@
 			</div>
 
 			<div class="space-x-8 flex justify-between mt-32 md:mt-0 md:justify-center">
-				<button
-					class="text-slate-100 py-2 px-4 uppercase rounded bg-blue-600 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
-				>
-					Follow
-				</button>
-				<button
-					class="text-white py-2 px-4 uppercase rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
-				>
-					Message
-				</button>
 				<%- if current_user == @account.user %>
 					<%= link_to "Settings", edit_account_path, class: "text-white py-2 px-4 uppercase flex items-center rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5 " %>
+					<%= link_to "Followees", "#", class: "text-white py-2 px-4 uppercase flex items-center rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5" %>
+				<% else %>
+					<%- if @already_followed %>
+						<%= link_to "Unfollow", unfollow_path(@account), class: "text-slate-100 py-4 px-4 uppercase rounded bg-blue-600 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5", data: { turbo_method: :delete, turbo_confirm: "Are you sure to unfollow this person?"} %>
+					<% else %>
+						<%= button_to "Follow", follow_path(@account), class: "text-slate-100 py-4 px-4 uppercase rounded bg-blue-600 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5", data: { turbo_method: :post } %>
+					<% end %>
+					<%= link_to "Message", "#", class: "text-white px-4 uppercase flex items-center rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5 " %>
 				<% end %>
 			</div>
 		</div>
-
 		<div class="mt-20 text-center border-b pb-12">
 			<h1 class="text-4xl font-medium text-slate-100"><%=  @account.first_name %> <%= @account.last_name %> </h1>
 			<p class="font-light text-slate-200 mt-3"><%= @account.address %></p>

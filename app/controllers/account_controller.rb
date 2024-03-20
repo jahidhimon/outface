@@ -2,7 +2,8 @@
 
 class AccountController < ApplicationController
   def profile
-    @account = current_user.account
+    @account = Account.find(params[:id])
+    @already_followed = Follow.exists?(follower_id: current_user.account.id, followee_id: @account.id)
   end
 
   def dashboard; end

@@ -17,5 +17,10 @@ Rails.application.routes.draw do
   get 'settings', to: 'account#settings', as: 'edit_account'
   patch 'settings', to: 'account#update', as: 'update_account'
 
+  post 'profile/:id/follow', to: 'follow#create', as: 'follow'
+  delete 'profile/:id/unfollow', to: 'follow#destroy', as: 'unfollow'
+
+  get  'profile/:id/followers', to: 'follow#index', as: 'followers'
+
   root 'account#dashboard'
 end
