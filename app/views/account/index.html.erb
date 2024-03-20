@@ -1,0 +1,35 @@
+<div class="w-full md:w-3/5 flex flex-col mx-auto">
+	<h3 class="my-5 text-xl md:text-3xl sm:text-2xl font-bold leading-none text-gray-900 dark:text-white">Latest Accounts</h3>
+	<%- @accounts.each do |account| %>
+		<div class="flow-root">
+      <ul role="list" class="divide-y divide-slate-700">
+        <li class="py-3 sm:py-4">
+          <div class="flex items-center space-x-4">
+            <div class="flex-shrink-0">
+							<%= link_to profile_path(account) do %>
+								<%= image_tag account.avatar.variant(:thumb), class: "bg-slate-700 inline-block h-10 w-10 rounded-full object-cover", alt:"avatar of #{account.first_name} #{account.last_name}" %>
+							<% end %>
+            </div>
+            <div class="flex-1 min-w-0">
+							<%= link_to "#{account.first_name} #{account.last_name}", profile_path(account), class: "text-sm font-medium text-gray-900 truncate dark:text-white" %>
+							<p class="text-sm text-gray-500 truncate dark:text-gray-400">
+								<%= account.user.email %>
+              </p>
+            </div>
+            <div class="inline-flex items-center text-base font-semibold text-white">
+							<%- if current_user.account == account %>
+								<h2 class="text-xl text-slate-600 uppercase">You</h2>
+							<% else %>
+								<%- if current_user_follows?(account) %>
+									<%= link_to "Unfollow", unfollow_path(account), class: "text-slate-100 py-2 px-3 rounded bg-blue-600 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5", data: { turbo_method: :delete, turbo_confirm: "Are you sure to unfollow this person?"} %>
+								<% else %>
+									<%= button_to "Follow", follow_path(account), class: "text-slate-100 py-2 px-3 rounded bg-blue-600 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5", data: { turbo_method: :post } %>
+								<% end %>
+							<% end %>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	<% end %>
+</div>
