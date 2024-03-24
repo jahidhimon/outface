@@ -53,6 +53,11 @@
 		<div class="mt-8 flex flex-col justify-center">
 			<p class="text-slate-200 text-center font-light lg:px-16"><%= @account.about %></p>
 		</div>
+	</div>
 
+	<div class="mt-10 space-y-8">
+		<% @posts.each do |post| %>
+				<%= render "posts/post", post: post %>
+		<% end %>
 	</div>
 </div>

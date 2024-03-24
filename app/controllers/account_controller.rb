@@ -5,6 +5,7 @@ class AccountController < ApplicationController
   def profile
     @account = Account.find(params[:id])
     @already_followed = current_user_follows?(@account)
+    @posts = @account.posts
   end
 
   def dashboard; end
