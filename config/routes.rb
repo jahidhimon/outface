@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   get 'profile/:id', to: 'account#profile', as: 'profile'
+  get 'users', to: 'account#index', as: 'users'
   get 'settings', to: 'account#settings', as: 'edit_account'
   patch 'settings', to: 'account#update', as: 'update_account'
 

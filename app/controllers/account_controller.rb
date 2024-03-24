@@ -1,12 +1,17 @@
 # frozen_string_literal: true
 
 class AccountController < ApplicationController
+  helper_method :current_user_follows?
   def profile
     @account = Account.find(params[:id])
-    @already_followed = Follow.exists?(follower_id: current_user.account.id, followee_id: @account.id)
+    @already_followed = current_user_follows?(@account)
   end
 
   def dashboard; end
+
+  def index
+    @accounts = Account.all.includes(:user)
+  end
 
   def settings
     @account = current_user.account
@@ -23,6 +28,10 @@ class AccountController < ApplicationController
   end
 
   private
+
+  def current_user_follows?(account)
+    Follow.exists?(follower_id: current_user.account.id, followee_id: account.id)
+  end
 
   def account_params
     params.require(:account).permit(:avatar, :first_name, :last_name, :designation, :company, :address, :about)
