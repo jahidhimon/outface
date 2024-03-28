@@ -1,0 +1,5 @@
+<%= turbo_stream.append "comments" do %>
+		<%= render @comment %>
+<% end %>
+<%= turbo_stream.update "comments_count", "#{@post.comments.count}" %>
+<%= turbo_stream.update "new_comment", partial: "comments/form" %>

@@ -56,6 +56,7 @@ group :development, :test do
   gem 'faker'
   gem 'guard'
   gem 'pry'
+  gem 'rack-mini-profiler', require: false
 end
 
 group :development do
