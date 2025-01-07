@@ -28,6 +28,7 @@ gem 'stimulus-rails'
 # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
 gem 'tailwindcss-rails'
 
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
 
@@ -77,3 +78,7 @@ group :test do
 end
 
 gem 'devise', '~> 4.9'
+
+gem "dockerfile-rails", ">= 1.6", :group => :development
+
+gem "aws-sdk-s3", "~> 1.162", :require => false
